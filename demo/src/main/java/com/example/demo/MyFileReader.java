@@ -3,7 +3,6 @@ package com.example.demo;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.Buffer;
 
 import org.springframework.stereotype.Service;
 
@@ -35,7 +34,7 @@ public class MyFileReader {
     }
 
     // method to read student data from csv file
-    public String ReadCSV(){
+    public StringBuilder ReadCSV(){
 
         StringBuilder content = new StringBuilder();
         String line;
@@ -46,8 +45,8 @@ public class MyFileReader {
                 line = reader.readLine();
                 content.append(line);
             }
+            return content;
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
