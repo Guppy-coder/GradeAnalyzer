@@ -3,19 +3,24 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class StudentService {
     
     public StudentService(){
         // constructor
     }
 
-    public HashMap readStudentData(ArrayList<String> content){
-        // read student data from csv file
+    
+
+    public StudentEntity CreateStudent(ArrayList<String> content){
+        // sort student data
+        // create student object
+        StudentEntity student = new StudentEntity();
         for (int i = 0; i < content.size(); i++) {
             // read student data
             String[] studentData = content.get(i).split(",");
-            // create student object
-            StudentEntity student = new StudentEntity();
             student.setId(Long.parseLong(studentData[0]));
             student.setName(studentData[1]);
             student.setGpa(Double.parseDouble(studentData[2]));
@@ -27,7 +32,7 @@ public class StudentService {
             courses.put("Art", studentData[7]);
             student.setCourses(courses);
         }
-        return null;
+        return student;
     }
 
     public StudentEntity getStudent(long id){

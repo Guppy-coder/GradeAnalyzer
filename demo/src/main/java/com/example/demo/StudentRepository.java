@@ -13,9 +13,4 @@ public class StudentRepository {
     public void deleteStudent(long id){
         // delete student from database
     }
-
-    public StudentEntity getStudent(long id){
-        // get student from database
-        return null;
-    }
 }
