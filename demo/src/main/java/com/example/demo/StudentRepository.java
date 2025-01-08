@@ -1,16 +1,14 @@
 package com.example.demo;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class StudentRepository {
+public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
     
+    StudentEntity findById(long id);
+    
+    public void saveStudent(StudentEntity student);
 
-    public void saveStudent(StudentEntity student){
-        // save student to database
-    }
-
-    public void deleteStudent(long id){
-        // delete student from database
-    }
+    public void deleteStudent(long id);
 }
