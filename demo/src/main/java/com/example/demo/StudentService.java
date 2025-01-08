@@ -7,14 +7,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class StudentService {
+
+    StudentRepository StudentRepository;
     
-    public StudentService(){
+    public StudentService(StudentRepository studentRepository) {
+        this.StudentRepository = studentRepository;
         // constructor
     }
 
     
 
-    public StudentEntity CreateStudent(ArrayList<String> content){
+    public void CreateStudent(ArrayList<String> content){
         // sort student data
         // create student object
         StudentEntity student = new StudentEntity();
@@ -32,7 +35,8 @@ public class StudentService {
             courses.put("Art", studentData[7]);
             student.setCourses(courses);
         }
-        return student;
+        // save student to database
+        StudentRepository.saveStudent(student);
     }
 
     public StudentEntity getStudent(long id){
