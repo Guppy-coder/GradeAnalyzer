@@ -3,19 +3,19 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StudentService {
 
+    @Autowired
     StudentRepository StudentRepository;
     
-    public StudentService(StudentRepository studentRepository) {
-        this.StudentRepository = studentRepository;
+    public StudentService() {
         // constructor
     }
 
-    
 
     public void CreateStudent(ArrayList<String> content){
         // sort student data
@@ -40,7 +40,10 @@ public class StudentService {
     }
 
     public StudentEntity getStudent(long id){
-        // get student from database
-        return null;
+        return StudentRepository.findById(id);
+    }
+
+    public void deleteStudent(long id){
+        StudentRepository.deleteStudent(id);
     }
 }
