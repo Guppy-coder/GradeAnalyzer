@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -11,15 +13,15 @@ public class StudentServiceTests {
         // create a new student
         StudentService studentService = new StudentService();
         StudentEntity student = new StudentEntity();
-        student.setName("John Doe");
-        student.setGpa(3.5);
-        HashMap<String, String> courses = new HashMap<>();
-        courses.put("Math", "A");
-        courses.put("Science", "B");
-        student.setCourses(courses);
+
+        ArrayList<String> content = new ArrayList<>();
+        content.add("1,John Doe,3.5,90,85,95,80,75");
+        // set student data
+        studentService.CreateStudent(content);
+
         
         // save the student
-        
+        studentService.CreateStudent(content);
         // verify that the student was saved
         StudentEntity savedStudent = studentService.getStudent(student.getId());
         assertEquals(student, savedStudent);
