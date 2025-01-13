@@ -5,10 +5,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
-    
-    StudentEntity findById(long id);
-    
-    public void saveStudent(StudentEntity student);
-
-    public void deleteStudent(long id);
 }
