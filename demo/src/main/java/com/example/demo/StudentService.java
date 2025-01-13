@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class StudentService {
     }
 
 
-    public void CreateStudent(ArrayList<String> content){
+    public void AutoSaveStudentsFromCSV(ArrayList<String> content){
         // sort student data
         // create student object
         StudentEntity student = new StudentEntity();
@@ -36,14 +37,19 @@ public class StudentService {
             student.setCourses(courses);
         }
         // save student to database
-        StudentRepository.saveStudent(student);
+        StudentRepository.save(student);
     }
 
-    public StudentEntity getStudent(long id){
+    public Optional<StudentEntity> getStudent(long id){
         return StudentRepository.findById(id);
     }
 
+    public StudentEntity saveStudent(StudentEntity student){
+        StudentRepository.save(student);
+        return student;
+    }
+
     public void deleteStudent(long id){
-        StudentRepository.deleteStudent(id);
+        StudentRepository.deleteById(id);
     }
 }
