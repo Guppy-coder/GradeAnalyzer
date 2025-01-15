@@ -44,9 +44,8 @@ public class StudentService {
         return StudentRepository.findById(id);
     }
 
-    public StudentEntity saveStudent(StudentEntity student){
+    public void saveStudent(StudentEntity student){
         StudentRepository.save(student);
-        return student;
     }
 
     public void deleteStudent(long id){
